@@ -36,5 +36,10 @@
             "Lav45\\Watcher\\Test\\": "test"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
 }
