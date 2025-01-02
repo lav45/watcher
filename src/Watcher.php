@@ -44,7 +44,7 @@ final class Watcher
         return $new;
     }
 
-    public function read(array $params = [], \Closure $throwException = null): void
+    public function read(array $params = [], \Closure|null $throwException = null): void
     {
         foreach ($this->listener->read() as $item) {
             $event = new Event(
