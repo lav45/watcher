@@ -16,11 +16,11 @@ final class WatcherTest extends TestCase
         for ($i = 0; $i < 1000; $i++) {
 
             $watcher = (new Watcher(new Listener()))
-                ->on(IN_MOVE, static fn () => true)
-                ->on(IN_DELETE, static fn () => true)
-                ->on(IN_MOVED_TO, static fn () => true)
-                ->on(IN_MOVED_FROM, static fn () => true)
-                ->on(IN_CREATE, static fn () => true)
+                ->on(IN_MOVE, static fn() => true)
+                ->on(IN_DELETE, static fn() => true)
+                ->on(IN_MOVED_TO, static fn() => true)
+                ->on(IN_MOVED_FROM, static fn() => true)
+                ->on(IN_CREATE, static fn() => true)
                 ->watchDirs([\dirname(__DIR__, 2)]);
 
             $watcher->read();

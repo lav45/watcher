@@ -1,0 +1,6 @@
+{
+    "require-dev": {
+        "ext-posix": "*",
+        "phpunit/phpunit": "^12"
+    }
+}

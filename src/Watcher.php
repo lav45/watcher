@@ -2,9 +2,7 @@
 
 namespace Lav45\Watcher;
 
-use Closure;
-
-final class Watcher
+final class Watcher implements WatcherInterface
 {
     private array $attachDirs = [];
 
@@ -12,11 +10,11 @@ final class Watcher
 
     private int $mask = IN_CREATE | IN_DELETE | IN_MOVED_TO | IN_MOVED_FROM;
 
-    private Closure|null $filter = null;
+    private \Closure|null $filter = null;
 
     public function __construct(private readonly ListenerInterface $listener) {}
 
-    public function on(int $mask, Closure $handler): self
+    public function on(int $mask, \Closure $handler): self
     {
         $new = clone $this;
         $new->mask |= $mask;
@@ -24,11 +22,7 @@ final class Watcher
         return $new;
     }
 
-    /**
-     * Example:
-     * $this->withFilter(static fn(Event $event): bool => str_ends_with($event->name, '.json'))
-     */
-    public function withFilter(Closure $filter): self
+    public function withFilter(\Closure $filter): self
     {
         $new = clone $this;
         $new->filter = $filter;
@@ -86,8 +80,7 @@ final class Watcher
     }
 
     /**
-     * @param int $mask
-     * @return Closure[]
+     * @return \Closure[]
      */
     private function getEventHandlers(int $mask): iterable
     {

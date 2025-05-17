@@ -9,7 +9,7 @@ final class Listener implements ListenerInterface
     public function __construct(bool $async = false)
     {
         $this->inotify = \inotify_init();
-        stream_set_blocking($this->inotify, $async);
+        \stream_set_blocking($this->inotify, $async);
     }
 
     public function read(): iterable
