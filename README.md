@@ -16,7 +16,7 @@ $watcher = (new Watcher(new Listener()))
     ->on(IN_DELETE | IN_MOVED_FROM, static function(Event $event) {
         echo 'Delete ' . $event->path . "\n";
     })
-    ->on(IN_CLOSE_WRITE, static function(Event $event) {
+    ->on(IN_MODIFY, static function(Event $event) {
         echo 'Update ' . $event->path . "\n";
     })
     ->withFilter(fn(Event $event): bool => \str_ends_with($event->path, '.json'))
